@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .infobox {
+       @apply md:float-right w-[30%] lg:w-1/4 mx-auto border border-gray-400 dark:border-gray-700 md:ml-7 bg-gray-200 dark:bg-gray-800;
+    }
+
+  .infobox td {
+    @apply !p-1;
+  }
+}
