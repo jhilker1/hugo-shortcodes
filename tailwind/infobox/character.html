@@ -1,0 +1,33 @@
+{{ $url := $.Page.RelPermalink }}
+
+<aside class="infobox">
+    {{ with .Get "title"}}
+    <header class="w-full p-1 text-lg font-bold text-center text-white bg-blue-500">{{.}}</header>
+    {{ end }}
+    <figure class="!my-0">
+   <img src="{{ with .Get "img"}}{{.}}{{end}}" alt="" class='object-contain {{with .Get "imgclass"}}{{.}}{{end}}'> 
+    </figure>
+
+ <table class="w-full">
+      <tr>
+        <td class="first:!pl-2 first:font-bold">Born</td>
+        <td class="!pr-0 !py-0">{{with .Get "born"}}{{.}}{{end}}</td>
+      </tr>
+      {{with .Get "died"}}
+      <tr>
+        <td class="first:!pl-2 first:font-bold">Died</td>
+        <td class="!pr-0 !py-0">{{.}}</td>
+      </tr>
+      {{end}}
+ <tr>
+        <td class="first:!pl-2 first:font-bold">Family</td>
+        <td class="!pr-0 !py-0">
+          {{with .Get "family"}}
+          {{ $link := urlize .}}
+          {{ $page := $.Site.GetPage $link}}
+         <a href="{{$page.RelPermalink}}" class="{{if not $page.RelPermalink}}!text-red-500 hover:!text-red-600 dark:hover:!text-red-400{{end}}">{{.}}</a>
+          {{end}}
+        </td>
+    </tr> 
+</table>
+</aside>
